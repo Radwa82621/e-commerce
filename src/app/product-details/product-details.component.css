@@ -1,0 +1,13 @@
+button {
+    background-color: #22db14;
+    transition: all .5s;
+    color: #fff;
+}
+
+button:hover {
+    background-color: #22db14;
+    filter: brightness(.9);
+    color: #fff;
+
+
+}

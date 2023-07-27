@@ -1,0 +1,10 @@
+.nav-icon{
+    font-size: 2rem;
+color: rgb(79, 167, 79);
+}
+li{
+    cursor: pointer;
+}
+.bg-main{
+background-color: rgb(79, 167, 79); 
+}

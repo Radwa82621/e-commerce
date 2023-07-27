@@ -1,0 +1,64 @@
+<div class="container my-5">
+    <h2>register now</h2>
+    <form action="" [formGroup]="regisiterForm" (ngSubmit)="register(regisiterForm)">
+<div *ngIf="APIerror" class="alert alert-danger  ">
+    <p>{{APIerror}}</p>
+</div>
+        <div class="my-3">
+            <label for="name">Name :</label>
+            <input type="text" id="name" formControlName="name" class="form-control mb-3">
+            <div *ngIf="regisiterForm.get('name')?.errors && regisiterForm.get('name')?.touched" class="alert alert-danger">
+                <p *ngIf="regisiterForm.get('name')?.getError('required')" class="text-danger mb-0">name is required</p>
+                <p *ngIf="regisiterForm.get('name')?.getError('minlength')" class="text-danger mb-0">name min length is 3</p>
+                <p *ngIf="regisiterForm.get('name')?.getError('maxlength')"class="text-danger mb-0">name max length is 8 </p>
+
+            </div>
+        </div>
+
+        <div class="my-3">
+
+            <label for="email">Email :</label>
+            <input type="email" id="email" formControlName="email" class="form-control mb-3">
+            <div *ngIf="regisiterForm.get('email')?.errors && regisiterForm.get('email')?.touched" class="alert alert-danger">
+                <p *ngIf="regisiterForm.get('email')?.getError('required')" class="text-danger mb-0">email is required</p>
+                <p *ngIf="regisiterForm.get('email')?.getError('email')" class="text-danger mb-0">email pattern is inavalid</p>
+
+            </div>
+        </div>
+        <div class="my-3">
+
+            <label for="password">Password :</label>
+            <input type="password" id="password"formControlName="password" class="form-control mb-3">
+            <div *ngIf="regisiterForm.get('password')?.errors && regisiterForm.get('password')?.touched" class="alert alert-danger">
+                <p *ngIf="regisiterForm.get('password')?.getError('required')" class="text-danger mb-0">password is required</p>
+                <p *ngIf="regisiterForm.get('password')?.getError('pattern')" class="text-danger mb-0">password pattern is inavalid</p>
+
+            </div>       
+        </div>
+        <div class="my-3">
+
+            <label for="rePassword">Re-password :</label>
+            <input type="password" id="rePassword"formControlName="rePassword" class="form-control mb-3">
+            <div *ngIf="regisiterForm.get('rePassword')?.errors && regisiterForm.get('rePassword')?.touched" class="alert alert-danger">
+                <p *ngIf="regisiterForm.get('rePassword')?.getError('required')" class="text-danger mb-0">re-Password is required</p>
+                <p *ngIf="regisiterForm.get('rePassword')?.getError('pattern')" class="text-danger mb-0">re-Password pattern is inavalid</p>
+
+            </div> 
+        </div>
+        <div class="my-3">
+
+            <label for="phone">Phone :</label>
+            <input type="tel" id="phone"formControlName="phone" class="form-control mb-3">
+            <div *ngIf="regisiterForm.get('phone')?.errors && regisiterForm.get('phone')?.touched" class="alert alert-danger">
+                <p *ngIf="regisiterForm.get('phone')?.getError('required')" class="text-danger mb-0">phone is required</p>
+                <p *ngIf="regisiterForm.get('phone')?.getError('minlength')" class="text-danger mb-0">phone min length is 10</p>
+                <p *ngIf="regisiterForm.get('phone')?.getError('maxlength')"class="text-danger mb-0">phone max length is 12 </p>
+
+            </div>
+        </div>
+        <button class="btn btn-lg ms-auto" [disabled]="regisiterForm.invalid" >
+            <i *ngIf="isLoading==true" class="fa-solid fa-spinner fa-spin"></i>
+            <span *ngIf="isLoading==false">Register now</span>
+        </button>
+    </form>
+</div>

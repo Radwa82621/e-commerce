@@ -8,7 +8,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 })
 export class AuthService {
 userData:BehaviorSubject<any>=new BehaviorSubject('')
-  constructor(private _http:HttpClient,private _router:Router) {
+constructor(private _http:HttpClient,private _router:Router) {
  if(localStorage.getItem('userToken')){
   this.getUserData()
  }
@@ -33,4 +33,25 @@ logOut(){
   this.userData.next(null)
   this._router.navigate(["/sign-in"])
 }
+forgetPassword(email:string):Observable<any>{
+  return this._http.post(`https://ecommerce.routemisr.com/api/v1/auth/forgotPasswords`,
+  {
+    "email":email
+})
+}
+
+VerifyResetCode(code:string):Observable<any>{
+  return this._http.post(`https://ecommerce.routemisr.com/api/v1/auth/verifyResetCode`,
+  {
+    "resetCode":code
+})
+}
+restPassword(email:string,newPassword:string):Observable<any>{
+
+return this._http.put(`https://ecommerce.routemisr.com/api/v1/auth/resetPassword`,{
+"email":email,
+  "newPassword":newPassword 
+})
+}
+
 }

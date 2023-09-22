@@ -9,41 +9,55 @@ import { CartService } from '../shared/services/cart.service';
   templateUrl: './wish-list.component.html',
   styleUrls: ['./wish-list.component.css']
 })
-export class WishListComponent implements OnInit ,DoCheck {
-  wishList:Product[]=[]
-  isExist:boolean=false
-  constructor(private _wish:WishListService,private _cart:CartService){
-    if(!localStorage.getItem('wishList')){
-      this.wishList=[]
-      this.isExist=true
-    }else{
-      this.isExist=false
-      this.wishList=JSON.parse(`${localStorage.getItem('wishList')}`)
+export class WishListComponent implements OnInit  {
+  wishList:any[]=[]
+  constructor(private _wish:WishListService,private _cartService :CartService){
+   
     }
-  }
-  ngDoCheck(): void {
-// console.log(this.wishList,this.isExist);
 
-  }
-  ngOnInit(): void {
   
-    if(this.isExist){
-      this.wishList=this._wish.product
+
+  ngOnInit(): void {
+    this.getWishList()
     }
    
+    getWishList(){
+this._wish.getWishList().subscribe({
+  next:(res)=>{
+  this.wishList=res.data
+console.log(this.wishList);
+},
+  error:(err)=>console.log(err)
+  
+  })
+    }
+    removeFromWishList(id:string){
+      this._wish.removeFromWishList(id).subscribe({
+        next:(res)=>{
+    console.log(res);
+    this.getWishList()
+    
+      },
+        error:(err)=>console.log(err)
+        
+        })
+    }
+
+    addToCart(id:string){
+this._cartService.addToCart(id).subscribe({
+  next:(res)=>{console.log(res);
+    this._cartService.numOfCartItems.next(res.numOfCartItems)
+  this.removeFromWishList(id)},
+  error:(err)=>console.log(err)
+  
+  })
+
+    }
+
   }
 
-  addToCart(id:string){
-    this._cart.addToCart(id).subscribe({
-      next:(res)=>{
-        console.log(res);
-      this._cart.numOfCartItems.next(res.numOfCartItems)},
-      error:(err)=>console.log(err)
-      
-      })
-  }
 
 
-}
+
 
 

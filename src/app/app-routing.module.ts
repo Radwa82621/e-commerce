@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
-import { AboutComponent } from './about/about.component';
 import { ProductsComponent } from './products/products.component';
 import { BrandsComponent } from './brands/brands.component';
 import { CategoriesComponent } from './categories/categories.component';
@@ -13,11 +12,13 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
 import { SettingsModule } from './settings/settings.module';
 import { CheckOutComponent } from './cart/check-out/check-out.component';
 import { OrdersComponent } from './cart/orders/orders.component';
+import { ForgetPasswordComponent } from './forget-password/forget-password.component';
+import { VerifyCodeComponent } from './verify-code/verify-code.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 
 const routes: Routes = [
   {path:"",component:HomeComponent,pathMatch:'full'},
   {path:"home",canActivate:[AuthGuard],component:HomeComponent,title:'home component'},
-  {path:"about",canActivate:[AuthGuard],component:AboutComponent,title:'about component'},
   {path:"products",canActivate:[AuthGuard],component:ProductsComponent,title:'products component'},
   {path:"brands",canActivate:[AuthGuard],component:BrandsComponent,title:'brands component'},
   {path:"categories",canActivate:[AuthGuard],component:CategoriesComponent,title:'categories component'},
@@ -25,6 +26,10 @@ const routes: Routes = [
   {path:"settings",loadChildren:()=>import('./settings/settings.module').then((m)=>m.SettingsModule)},
   
   {path:"sign-in",component:SignInComponent,title:'sign-in component'},
+  {path:"forget-password",component:ForgetPasswordComponent,title:'forget-password'},
+  {path:"verify-code",component:VerifyCodeComponent,title:'verify-code'},
+  {path:"reset-password",component:ResetPasswordComponent,title:'reset-password'},
+
   {path:"sign-up",component:SignUpComponent,title:'sign-up component'},
   { path: 'cart', loadChildren: () => import('./cart/cart.module').then(m => m.CartModule) },
   {path:"check-out/:cartId",canActivate:[AuthGuard],component:CheckOutComponent,title:'check-out component'},

@@ -21,5 +21,6 @@ export class ProductsService {
   getProductByID(id:string):Observable<any>{
     return this._http.get(`https://ecommerce.routemisr.com/api/v1/products/${id}`)
   }
+  
 
 }

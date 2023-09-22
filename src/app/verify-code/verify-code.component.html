@@ -1,0 +1,14 @@
+<div class="container">
+    <h2>reset your account password</h2>
+   <form action="" [formGroup]="verifycodeForm" (ngSubmit)="verifyCode()" >
+    <div class="form-floating mb-3" >
+        <input type="text" class="form-control" id="floatingInput" placeholder="your code" formControlName="code">
+        <label for="floatingInput">code </label>
+      </div>
+      <div class="alert alert-danger"*ngIf="isFalse" >
+        <p class=" m-2" > the code isn't valid</p>
+
+      </div>
+      <button class="btn btn-lg me-auto btn-outline-success" type="submit">verify</button>
+   </form>
+</div>

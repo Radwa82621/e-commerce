@@ -4,7 +4,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
-import { AboutComponent } from './about/about.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ProductsComponent } from './products/products.component';
@@ -23,12 +22,14 @@ import { MainSliderComponent } from './main-slider/main-slider.component';
 import { SearchPipe } from './shared/pipes/search.pipe';
 import { LoaderComponent } from './loader/loader.component';
 import { LoaderInterceptor } from './shared/services/loader.interceptor';
+import { ForgetPasswordComponent } from './forget-password/forget-password.component';
+import { VerifyCodeComponent } from './verify-code/verify-code.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    AboutComponent,
     NavbarComponent,
     NotFoundComponent,
     ProductsComponent,
@@ -42,6 +43,9 @@ import { LoaderInterceptor } from './shared/services/loader.interceptor';
     MainSliderComponent,
     SearchPipe,
     LoaderComponent,
+    ForgetPasswordComponent,
+    VerifyCodeComponent,
+    ResetPasswordComponent,
   ],
   imports: [
     BrowserModule,

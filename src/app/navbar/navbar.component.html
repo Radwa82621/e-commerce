@@ -9,41 +9,26 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0" *ngIf="isLoggedIn">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" routerLink="home">Home</a>
+            <a class="nav-link " aria-current="page" routerLink="home" routerLinkActive="active">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink="about">about</a>
+            <a class="nav-link" routerLink="cart"routerLinkActive="active">cart</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink="cart">cart</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="wishList">wish list</a>
+            <a class="nav-link" routerLink="wishList"routerLinkActive="active">wish list</a>
           </li>
            <li class="nav-item">
-            <a class="nav-link" routerLink="products">Products</a>
+            <a class="nav-link" routerLink="products"routerLinkActive="active">Products</a>
           </li> <li class="nav-item">
-            <a class="nav-link" routerLink="categories">catrgories</a>
+            <a class="nav-link" routerLink="categories"routerLinkActive="active">catrgories</a>
           </li> <li class="nav-item">
-            <a class="nav-link" routerLink="brands">brands</a>
+            <a class="nav-link" routerLink="brands" routerLinkActive="active">brands</a>
           </li>
           
         </ul>
 
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center gap-2">
-            <!-- <li class="nav-item">
-                <i class="fa-solid fa-basketball"></i>
-              </li>
-              <li class="nav-item">
-                <i class="fa-brands fa-facebook"></i>  </li>
-              <li class="nav-item">
-                <i class="fa-brands fa-twitter"></i>
-              </li>
-              <li class="nav-item">
-                <i class="fa-brands fa-linkedin"></i>              </li>
-              <li class="nav-item">
-                <i class="fa-brands fa-youtube"></i>       
-                     </li> -->
+
                 <li class="nav-item position-relative">
                   <a class="nav-link" routerLink="/cart"*ngIf="isLoggedIn">
                     <i class="fa-solid fa-cart-shopping fs-3"></i>

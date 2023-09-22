@@ -27,9 +27,12 @@
             </div>       
         </div>
         
+       <div class="d-flex justify-content-center align-items-between">
+        <p class="h5 forget" (click)="gotoForgetPass()" >forget your password ?</p>
         <button class="btn btn-lg ms-auto" [disabled]="loginForm.invalid" >
             <i *ngIf="isLoading==true" class="fa-solid fa-spinner fa-spin"></i>
             <span *ngIf="isLoading==false">login now</span>
         </button>
+       </div>
     </form>
 </div>

@@ -4,6 +4,7 @@ import { ProductsService } from '../shared/services/products.service';
 import { Product } from '../shared/interfaces/product';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { CartService } from '../shared/services/cart.service';
+import { WishListService } from '../shared/services/wish-list.service';
 
 @Component({
   selector: 'app-product-details',
@@ -14,7 +15,8 @@ export class ProductDetailsComponent {
   productId:string=''
   productDetails:Product= {} as Product
   count:number=0
-  constructor(private _activatedRoute:ActivatedRoute,private _product:ProductsService,private _cart:CartService){
+  wishListArray:string[]=[]
+  constructor(private _activatedRoute:ActivatedRoute,private _product:ProductsService,private _cart:CartService ,private _WishListService:WishListService){
     this._activatedRoute.paramMap.subscribe((res:any)=>{console.log(res.params.id)
     this.productId=res.params.id
     this.getProdycrById()
@@ -55,6 +57,16 @@ this._product.getProductByID(this.productId).subscribe({
       
       })
   }
+  addToWishlist(id:any){
+    this._WishListService.addToWishlist(id).subscribe({
+      next:(res)=>{
+      this.wishListArray=res.data
+    console.log(this.wishListArray);
+    },
+        error:(err)=>console.log(err)
+    })
 
+    
+  }
 
 }

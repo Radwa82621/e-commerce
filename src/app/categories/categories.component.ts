@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProductsService } from '../shared/services/products.service';
 import { Category } from '../shared/interfaces/category';
 import { OwlOptions } from 'ngx-owl-carousel-o';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-categories',
@@ -11,7 +12,7 @@ import { OwlOptions } from 'ngx-owl-carousel-o';
 export class CategoriesComponent implements OnInit{
   customOptions: OwlOptions = {
     loop: true,
-    mouseDrag: true,
+    mouseDrag: false,
     touchDrag: true,
     pullDrag: true,
     dots: false,
@@ -25,7 +26,9 @@ export class CategoriesComponent implements OnInit{
     nav: true
   }
   allCategories:Category[]=[]
-  constructor(private _products:ProductsService){
+  categoryId:string=""
+  subCategories!:any[]
+  constructor(private _products:ProductsService,private _router:Router){
 
   }
   ngOnInit(): void {
@@ -39,5 +42,16 @@ this._products.getCategoeies().subscribe(res=>
 }
 )
   }
+  getSpecificCategory(slide:any){
+console.log(slide._id);
+this.categoryId=slide._id
+    this._products.getSubCategories(this.categoryId).subscribe(res=>
+      {console.log(res.data);
+        this.subCategories=res.data
+    }
+    )
+  }
+
+
 
 }

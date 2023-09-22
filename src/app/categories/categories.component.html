@@ -1,8 +1,8 @@
 <owl-carousel-o [options]="customOptions">
 
-    <ng-container *ngFor="let slide of allCategories">
+    <ng-container *ngFor="let slide of allCategories" >
       <ng-template carouselSlide >
-        <img [src]="slide.image" height="250" class="w-100" >
+        <img [src]="slide.image" height="250" class="w-100" (click)="getSpecificCategory(slide)">
         <h3>
             {{slide.name}}
         </h3>
@@ -10,3 +10,14 @@
     </ng-container>
 
   </owl-carousel-o> 
+
+  <div class="container">
+    <h2 *ngIf="subCategories" class="text-center green my-4">subcategories</h2>
+    <div class="row gy-3">
+      <div class="col-md-4" *ngFor="let subCategory of subCategories">
+         <div class="card" >
+          <p class="h3 text-center p-3 ">{{subCategory.name}}</p>
+         </div>
+      </div>
+    </div>
+  </div>

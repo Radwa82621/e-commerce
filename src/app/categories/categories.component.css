@@ -1,0 +1,9 @@
+.green{
+    color: rgb(79, 167, 79);
+}
+.card{
+    transition: all .5s;
+}
+.card:hover{
+    box-shadow: 1px 1px 10px 0px rgb(79, 167, 79);
+}

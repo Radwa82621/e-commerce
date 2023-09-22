@@ -1,7 +1,6 @@
 import { Component, DoCheck, Input, Output } from '@angular/core';
 import { Product } from '../shared/interfaces/product';
 import { CartService } from '../shared/services/cart.service';
-import { WishListService } from '../shared/services/wish-list.service';
 
 @Component({
   selector: 'app-product-item',
@@ -9,12 +8,12 @@ import { WishListService } from '../shared/services/wish-list.service';
   styleUrls: ['./product-item.component.css']
 })
 export class ProductItemComponent implements DoCheck {
-wishlist:any=''
+
 list:any[]=[]
 count:number=0
   @Input() product:Product={} as Product 
 
-  constructor(private _cart:CartService,private _wish:WishListService){
+  constructor(private _cart:CartService){
     // if(!localStorage.getItem('list')){
     //   this.list=[]
     // }else{
@@ -28,6 +27,8 @@ count:number=0
     
   }
   addToCart(id:string){
+    console.log("add");
+    
     this._cart.addToCart(id).subscribe({
       next:(res)=>{console.log(res);
       this._cart.numOfCartItems.next(res.numOfCartItems)},
@@ -35,13 +36,7 @@ count:number=0
       
       })
   }
-  addToWishList(products:Product){
-this._wish.product.push(this.product)
-localStorage.setItem('wishList',JSON.stringify(this._wish.product))
-  
-   
-    
-  }
+
 
 
   }

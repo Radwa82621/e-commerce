@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProductsService } from '../shared/services/products.service';
 import { Product } from '../shared/interfaces/product';
@@ -13,6 +13,7 @@ import { CartService } from '../shared/services/cart.service';
 export class ProductDetailsComponent {
   productId:string=''
   productDetails:Product= {} as Product
+  count:number=0
   constructor(private _activatedRoute:ActivatedRoute,private _product:ProductsService,private _cart:CartService){
     this._activatedRoute.paramMap.subscribe((res:any)=>{console.log(res.params.id)
     this.productId=res.params.id
@@ -48,7 +49,8 @@ this._product.getProductByID(this.productId).subscribe({
   }
   addToCart(id:string){
     this._cart.addToCart(id).subscribe({
-      next:(res)=>console.log(res),
+      next:(res)=>{console.log(res);
+        this._cart.numOfCartItems.next(res.numOfCartItems)},
       error:(err)=>console.log(err)
       
       })

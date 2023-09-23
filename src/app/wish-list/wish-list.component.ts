@@ -51,6 +51,7 @@ this._cartService.addToCart(id).subscribe({
   })
 
     }
+  
 
   }
 

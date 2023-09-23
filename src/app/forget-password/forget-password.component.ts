@@ -20,7 +20,7 @@ export class ForgetPasswordComponent {
   forgetPassword(forgetPasswordForm:FormGroup){
 
 this._AuthService.forgetPassword(forgetPasswordForm.value.email).subscribe({
-  next:(res)=>{console.log(res);
+  next:(res)=>{
 this.sucess=true
 this._router.navigate(['/verify-code'])
   },

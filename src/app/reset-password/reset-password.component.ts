@@ -23,9 +23,8 @@ export class ResetPasswordComponent {
 
 
   resetPassword(){
-    console.log(this.resetPasswordForm.value.email,this.resetPasswordForm.value.newPassword);
   this.AuthService.restPassword(this.resetPasswordForm.value.email,this.resetPasswordForm.value.newPassword).subscribe({
-    next:(res:any)=>{console.log(res,"hello");
+    next:(res:any)=>{
     localStorage.setItem("userToken",res.token)
     this._AuthService.getUserData()
 

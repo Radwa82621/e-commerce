@@ -6,6 +6,7 @@ import { Subject } from 'rxjs';
 })
 export class LoaderService {
   isLoading=new Subject<boolean>()
+  shouldRender:boolean=false
 
   constructor() { }
   show(){
@@ -15,4 +16,6 @@ export class LoaderService {
     this.isLoading.next(false)
 
   }
+
+
 }

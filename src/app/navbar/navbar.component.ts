@@ -10,12 +10,16 @@ import { ResetPasswordComponent } from '../reset-password/reset-password.compone
 })
 export class NavbarComponent implements OnInit {
   numOfCartItems:number=0
-isLoggedIn:boolean=false
+  isLoggedIn:boolean=false
 constructor(private _auth:AuthService ,private _cart:CartService ){
- 
+  if(localStorage.getItem('userToken')){
+    this.isLoggedIn=false
+   }
 }
   ngOnInit(): void {
-    this._auth.userData.subscribe((res)=>{console.log(res);
+   
+    this.isLoggedIn=false
+    this._auth.userData.subscribe((res)=>{
       if(res!=null){
         this.isLoggedIn=true;
       }else{

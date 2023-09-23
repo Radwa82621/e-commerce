@@ -21,10 +21,10 @@ export class ProductItemComponent implements DoCheck {
     
   }
   addToCart(id:string){
-    console.log("add");
+    
     
     this._cart.addToCart(id).subscribe({
-      next:(res)=>{console.log(res);
+      next:(res)=>{
       this._cart.numOfCartItems.next(res.numOfCartItems)},
       error:(err)=>console.log(err)
       
@@ -34,7 +34,6 @@ export class ProductItemComponent implements DoCheck {
     this._WishListService.addToWishlist(id).subscribe({
       next:(res)=>{
       this.wishListArray=res.data
-    console.log(this.wishListArray);
     },
         error:(err)=>console.log(err)
     })

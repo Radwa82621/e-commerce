@@ -23,11 +23,11 @@ loginForm:FormGroup= new FormGroup({
   password: new FormControl('',[Validators.required,Validators.pattern(/^[A-z][a-z0-9]{3,15}$/)]),
 })
 login(loginForm:FormGroup){
-  console.log("hi",loginForm);
+  
   if(loginForm.valid){
     this.isLoading=true
     this._auth.login(loginForm.value).subscribe({
-      next:(res:any)=>{console.log(res,"hello");
+      next:(res:any)=>{
       this.isLoading=false
       this.email=res.user.email
       localStorage.setItem('userEmail',this.email)
@@ -37,7 +37,7 @@ login(loginForm:FormGroup){
       this._auth.getUserData()
       this._router.navigate(['/home'])
     },
-      error:(err:any)=>{console.log(err.error.message)
+      error:(err:any)=>{
         this.isLoading=false,
       this.APIerror=err.error.message}
       

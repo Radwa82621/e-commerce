@@ -20,14 +20,14 @@ getCart(){
   this._cartService.getCard().subscribe({
     next:(res)=>{
     this.cartDetails=res
-  console.log( this.cartDetails);
+ 
   },
     error:(err)=>{console.log(err);}
   })
 }
 updateCart(id:string,count:number){
   this._cartService.UpdateCart(id,count).subscribe({
-    next:(res)=>{ console.log(res)
+    next:(res)=>{ 
       this.cartDetails=res } ,
     error:(err)=> console.log(err)
     
@@ -36,13 +36,13 @@ updateCart(id:string,count:number){
 }
 removeItem(id:string){
   this._cartService.removeItem(id).subscribe({
-    next:(res)=>{console.log(res);
+    next:(res)=>{
     this.cartDetails=res},
     error:(err)=>console.log(err),})
 }
 clearCart(){
   this._cartService.clearCart().subscribe({
-    next:(res)=>{console.log(res);
+    next:(res)=>{
     this.cartDetails=res
   this._router.navigate(['/home'])},
     error:(err)=>console.log(err),})

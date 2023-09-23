@@ -26,7 +26,7 @@ openModal:boolean=false
   }
   getBrands(){
     this._brandService.getBrands().subscribe({
-      next:(res)=>{console.log(res.data);
+      next:(res)=>{
         this.brands=res.data
 
       },
@@ -41,7 +41,7 @@ openModal:boolean=false
       slug:""
     }
     this._brandService.GetSpecificBrand(id).subscribe({
-      next:(res)=>{console.log(res.data);
+      next:(res)=>{
       this.SpecificBrand=res.data
       this.openModal=true
 

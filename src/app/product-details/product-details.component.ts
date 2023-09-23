@@ -17,7 +17,7 @@ export class ProductDetailsComponent {
   count:number=0
   wishListArray:string[]=[]
   constructor(private _activatedRoute:ActivatedRoute,private _product:ProductsService,private _cart:CartService ,private _WishListService:WishListService){
-    this._activatedRoute.paramMap.subscribe((res:any)=>{console.log(res.params.id)
+    this._activatedRoute.paramMap.subscribe((res:any)=>{
     this.productId=res.params.id
     this.getProdycrById()
     }
@@ -26,7 +26,7 @@ export class ProductDetailsComponent {
 
   getProdycrById(){
 this._product.getProductByID(this.productId).subscribe({
-  next:(res)=>{console.log(res)
+  next:(res)=>{
   this.productDetails=res.data
 },
   error:(err)=>{console.log(err);
@@ -51,7 +51,7 @@ this._product.getProductByID(this.productId).subscribe({
   }
   addToCart(id:string){
     this._cart.addToCart(id).subscribe({
-      next:(res)=>{console.log(res);
+      next:(res)=>{
         this._cart.numOfCartItems.next(res.numOfCartItems)},
       error:(err)=>console.log(err)
       
@@ -61,7 +61,7 @@ this._product.getProductByID(this.productId).subscribe({
     this._WishListService.addToWishlist(id).subscribe({
       next:(res)=>{
       this.wishListArray=res.data
-    console.log(this.wishListArray);
+    
     },
         error:(err)=>console.log(err)
     })

@@ -18,9 +18,8 @@ isFalse:boolean=false
   }
 
   verifyCode(){
-    console.log(this.verifycodeForm.value.code);
     this._AuthService.VerifyResetCode(this.verifycodeForm.value.code).subscribe({
-      next:(res:any)=>{console.log(res,"hello");
+      next:(res:any)=>{
       this._router.navigate(['/reset-password'])
     },
       error:(err:any)=>{console.log(err)

@@ -14,7 +14,6 @@ export class LoaderInterceptor implements HttpInterceptor {
   constructor(private _loader:LoaderService) {}
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    console.log(request);
     
    this._loader.show()
    let newReq=request.clone({

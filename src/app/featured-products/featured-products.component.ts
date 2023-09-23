@@ -19,7 +19,7 @@ this.getProducts();  }
 getProducts(){
   this._products.getProducts().subscribe(
   {
-    next:(res)=>{console.log(res);
+    next:(res)=>{
     this.allPoducts=res.data},
     error:(err) =>console.log(err),
     

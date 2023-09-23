@@ -2,7 +2,7 @@
     <h1 class="green text-center mb-5">All Brands</h1>
     <div class="row g-4">
         <div class="col-md-3" *ngFor="let brand of brands">
-            <div class="card" (click)="GetSpecificBrand(brand._id)"   data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <div class="card" (click)="GetSpecificBrand(brand._id)" data-bs-toggle="modal" data-bs-target="#exampleModal">
                <div class="card-img">
                 <img [src]="brand.image" class="img-fluid" alt="">
                </div>
@@ -19,7 +19,7 @@
 
   
   <!-- Modal -->
-  <div *ngIf="openModal" class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div *ngIf="openModal" class="modal fade"  id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">

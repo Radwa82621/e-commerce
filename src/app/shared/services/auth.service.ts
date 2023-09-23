@@ -8,16 +8,18 @@ import { BehaviorSubject, Observable } from 'rxjs';
 })
 export class AuthService {
 userData:BehaviorSubject<any>=new BehaviorSubject('')
+
 constructor(private _http:HttpClient,private _router:Router) {
  if(localStorage.getItem('userToken')){
   this.getUserData()
+ }else{
+  this.userData.next(null)
  }
    }
 
    getUserData(){
     let encodedToken=JSON.stringify(localStorage.getItem("userToken"))
    let encoded= jwtDecode(encodedToken)
-   console.log(encoded);
    
    this.userData.next(encoded)
     

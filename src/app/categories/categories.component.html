@@ -1,8 +1,8 @@
-<owl-carousel-o [options]="customOptions">
+<owl-carousel-o [options]="customOptions" *ngIf="!_LoaderService.shouldRender" >
 
     <ng-container *ngFor="let slide of allCategories" >
       <ng-template carouselSlide >
-        <img [src]="slide.image" height="250" class="w-100" (click)="getSpecificCategory(slide)">
+        <img [src]="slide.image" height="250" class="w-100" >
         <h3>
             {{slide.name}}
         </h3>
@@ -11,8 +11,26 @@
 
   </owl-carousel-o> 
 
+
+
+  <div class="container" *ngIf="_LoaderService.shouldRender">
+  <div class="row g-4">
+    <div class="col-md-4" *ngFor="let category of allCategories" >
+<div class="card" (click)="getSpecificCategory(category)">
+  <div class="card-img">
+
+    <img [src]="category.image" class="img-fluid ratio-4x3 w-100" style="height: 300px" alt="">
+  </div>
+  <div class="card-body">
+    <p class="text-success h3 text-center" >{{category.name}}</p>
+  </div>
+</div>
+    </div>
+  </div>
+  </div>
+
   <div class="container">
-    <h2 *ngIf="subCategories" class="text-center green my-4">subcategories</h2>
+    <h2 *ngIf="subCategories" class="text-center green my-4"> {{name}} subcategories</h2>
     <div class="row gy-3">
       <div class="col-md-4" *ngFor="let subCategory of subCategories">
          <div class="card" >

@@ -9,7 +9,6 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { AuthGuard } from './auth.guard';
 import { ProductDetailsComponent } from './product-details/product-details.component';
-import { SettingsModule } from './settings/settings.module';
 import { CheckOutComponent } from './cart/check-out/check-out.component';
 import { OrdersComponent } from './cart/orders/orders.component';
 import { ForgetPasswordComponent } from './forget-password/forget-password.component';
@@ -17,13 +16,12 @@ import { VerifyCodeComponent } from './verify-code/verify-code.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 
 const routes: Routes = [
-  {path:"",component:HomeComponent,pathMatch:'full'},
+  {path:"",component:SignInComponent,pathMatch:'full'},
   {path:"home",canActivate:[AuthGuard],component:HomeComponent,title:'home component'},
   {path:"products",canActivate:[AuthGuard],component:ProductsComponent,title:'products component'},
   {path:"brands",canActivate:[AuthGuard],component:BrandsComponent,title:'brands component'},
   {path:"categories",canActivate:[AuthGuard],component:CategoriesComponent,title:'categories component'},
   {path:"ProductDetails/:id",canActivate:[AuthGuard],component:ProductDetailsComponent,title:'ProductDetails component'},
-  {path:"settings",loadChildren:()=>import('./settings/settings.module').then((m)=>m.SettingsModule)},
   
   {path:"sign-in",component:SignInComponent,title:'sign-in component'},
   {path:"forget-password",component:ForgetPasswordComponent,title:'forget-password'},
